@@ -1,4 +1,4 @@
-module github.com.br/verbeux-ai/evo-crm-go
+module github.com/verbeux-ai/evo-crm-go
 
 go 1.23.4
 
