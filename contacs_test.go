@@ -6,8 +6,8 @@ import (
 	"testing"
 	"time"
 
-	evo_crm "github.com.br/verbeux-ai/evo-crm-go"
 	"github.com/stretchr/testify/require"
+	evo_crm "github.com/verbeux-ai/evo-crm-go"
 )
 
 func TestListContactsFilter(t *testing.T) {

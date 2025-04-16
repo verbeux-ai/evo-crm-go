@@ -8,8 +8,8 @@ import (
 	"testing"
 	"time"
 
-	evo_crm "github.com.br/verbeux-ai/evo-crm-go"
 	"github.com/stretchr/testify/require"
+	evo_crm "github.com/verbeux-ai/evo-crm-go"
 )
 
 func TestListPanels(t *testing.T) {
@@ -55,6 +55,9 @@ func TestGetPanelByID(t *testing.T) {
 	includeDetails := []evo_crm.PanelIncludeDetails{
 		evo_crm.IncludeSteps,
 		evo_crm.IncludeTags,
+		evo_crm.IncludeCards,
+		evo_crm.IncludeStepsFields,
+		evo_crm.IncludeStepsCardCount,
 	}
 
 	panel, err := client.GetPanelByID(ctx, panelIdForTest, includeDetails)

@@ -12,23 +12,48 @@ import (
 )
 
 type Panel struct {
-	ID               string    `json:"id"`
-	CreatedAt        time.Time `json:"createdAt"`
-	UpdatedAt        time.Time `json:"updatedAt"`
-	CompanyID        string    `json:"companyId"`
-	Archived         bool      `json:"archived"`
-	Scope            string    `json:"scope"`
-	DepartmentIDs    []string  `json:"departmentIds"`
-	UserID           string    `json:"userId"`
-	Title            string    `json:"title"`
-	Description      string    `json:"description"`
-	ThumbnailID      *string   `json:"thumbnailId"`
-	ThumbnailFile    *any      `json:"thumbnailFile"`
-	Key              string    `json:"key"`
-	OverdueCardCount int       `json:"overdueCardCount"`
-	StepTitles       []string  `json:"stepTitles"`
-	Tags             []any     `json:"tags"`
-	Steps            []any     `json:"steps"`
+	ID               string            `json:"id"`
+	CreatedAt        time.Time         `json:"createdAt"`
+	UpdatedAt        time.Time         `json:"updatedAt"`
+	CompanyID        string            `json:"companyId"`
+	Archived         bool              `json:"archived"`
+	Scope            string            `json:"scope"`
+	DepartmentIDs    []string          `json:"departmentIds"`
+	UserID           string            `json:"userId"`
+	Title            string            `json:"title"`
+	Description      string            `json:"description"`
+	ThumbnailID      *string           `json:"thumbnailId"`
+	ThumbnailFile    *any              `json:"thumbnailFile"`
+	Key              string            `json:"key"`
+	OverdueCardCount int               `json:"overdueCardCount"`
+	StepTitles       []string          `json:"stepTitles"`
+	Tags             []any             `json:"tags"`  // Mantido como []any por falta de detalhe na estrutura de Tag
+	Steps            []PanelStepDetail `json:"steps"` // Alterado para usar a nova struct detalhada
+}
+
+type PanelStepField struct {
+	Key      string `json:"key"`
+	Type     string `json:"type"`
+	Position int    `json:"position"`
+	Visible  bool   `json:"visible"`
+}
+
+type PanelStepDetail struct {
+	ID               string                 `json:"id"`
+	CreatedAt        time.Time              `json:"createdAt"`
+	UpdatedAt        time.Time              `json:"updatedAt"`
+	CompanyID        string                 `json:"companyId"`
+	PanelID          string                 `json:"panelId"`
+	Archived         bool                   `json:"archived"`
+	Position         float64                `json:"position"`
+	Title            string                 `json:"title"`
+	IsInitial        bool                   `json:"isInitial"`
+	IsFinal          bool                   `json:"isFinal"`
+	CardCount        int                    `json:"cardCount"`
+	OverdueCardCount int                    `json:"overdueCardCount"`
+	MonetaryAmount   float64                `json:"monetaryAmount"`
+	Fields           []PanelStepField       `json:"fields"`
+	Cards            ListPanelCardsResponse `json:"cards"` // Reutiliza a struct da listagem de cards
 }
 
 type ListPanelsResponse struct {

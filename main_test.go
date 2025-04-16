@@ -5,8 +5,8 @@ import (
 	"os"
 	"testing"
 
-	evo_crm "github.com.br/verbeux-ai/evo-crm-go"
 	"github.com/joho/godotenv"
+	evo_crm "github.com/verbeux-ai/evo-crm-go"
 )
 
 var client *evo_crm.Client
